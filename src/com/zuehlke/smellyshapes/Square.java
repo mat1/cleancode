@@ -15,6 +15,7 @@ public class Square extends Rectangle {
 		return contains(x, y);
 	}
 
+	// FIXME LSP
 	public int getHeight() throws RuntimeException {
 		throw new RuntimeException(
 				"Square does not have a height, only edgeLength");

@@ -1,8 +1,13 @@
 package com.zuehlke.smellyshapes;
 
-public class DrawingBoard extends ShapeGroup {
+public class DrawingBoard {
 
 	private Color backgroundColor;
+	private ShapeGroup shapeGroup;
+	
+	public DrawingBoard() {
+		shapeGroup = new ShapeGroup();
+	}
 
 	public Color getBackgroundColor() {
 		return backgroundColor;
@@ -26,5 +31,9 @@ public class DrawingBoard extends ShapeGroup {
 		drawingBoard.add(new Square(-10, -10, 20));
 		drawingBoard.load(args[0]);
 		drawingBoard.drawOnScreen();
+	}
+
+	private void add(Shape shape) {
+		shapeGroup.add(shape);
 	}
 }
