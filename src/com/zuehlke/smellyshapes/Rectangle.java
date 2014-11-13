@@ -24,6 +24,7 @@ public class Rectangle extends SimpleShape {
 	}
 
 	public boolean contains(int x, int y) {
+		// TODO bool
 		return this.x <= x && x <= this.x + width && this.y <= y
 				&& y <= this.y + height;
 	}

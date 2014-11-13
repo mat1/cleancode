@@ -2,6 +2,7 @@ package com.zuehlke.smellyshapes;
 
 public abstract class AbstractShape implements Shape {
 
+	// TODO long method
 	public String toXml() {
 		StringBuilder builder = new StringBuilder();
 		if (this instanceof Circle) {

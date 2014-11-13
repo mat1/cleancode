@@ -12,6 +12,7 @@ public class Square extends Rectangle {
 	}
 
 	public boolean containsPoint(int x, int y) {
+		// TODO bool
 		return getX() <= x && x <= getX() + getWidth() && getY() <= y
 				&& y <= getY() + getWidth();
 	}

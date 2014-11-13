@@ -17,6 +17,7 @@ public class ShapeGroup extends ComplexShape {
 		this.readOnly = readOnly;
 	}
 
+	// TODO long method, deeply nested control flow
 	public void add(Shape shape) {
 		if (!readOnly) {
 			int newSize = size + 1;

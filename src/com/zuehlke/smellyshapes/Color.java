@@ -6,11 +6,16 @@ public class Color {
 	public static final String BLUE = "Blue";
 	public static final String RED = "Red";
 	
+	// TODO temp field
 	private String colorAsHex;
 	private String colorAsText;
+	// TODO temp field
 	private String colorAsRGB_Red;
+	// TODO temp field
 	private String colorAsRGB_Green;
+	// TODO temp field
 	private String colorAsRGB_Blue;
+	// TODO temp field
 	private String errorMessage;
 
 	public Color(String colorAsText) {
@@ -19,6 +24,7 @@ public class Color {
 	}
 
 	private void convertTextValueToRGBAndHex() {
+		// TODO long method
 		errorMessage = "";
 		if (RED.equals(colorAsText)) {
 			colorAsRGB_Red = "255";

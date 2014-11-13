@@ -5,6 +5,7 @@ public class Circle extends SimpleShape {
 	private int x;
 	private int y;
 	private int radius;
+	// TODO temp fields
 	private int numberOfContainingPoints;
 	private Color color = new Color(Color.GREEN);
 
@@ -15,6 +16,8 @@ public class Circle extends SimpleShape {
 	}
 
 	public boolean contains(int x, int y) {
+		// TODO bool
+		// TODO side effect
 		boolean result = (x - this.x) * (x - this.x) + (y - this.y)
 				* (y - this.y) <= radius * radius;
 		if (result == true) {
