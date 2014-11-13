@@ -1,12 +1,10 @@
 package com.zuehlke.smellyshapes;
 
-public class Circle extends SimpleShape {
+public class Circle extends Shape {
 
 	private int x;
 	private int y;
 	private int radius;
-	// TODO temp fields
-	private int numberOfContainingPoints;
 	private Color color = new Color(Color.GREEN);
 
 	public Circle(int x, int y, int radius) {
@@ -16,20 +14,17 @@ public class Circle extends SimpleShape {
 	}
 
 	public boolean contains(int x, int y) {
-		// TODO bool
-		// TODO side effect
-		boolean result = (x - this.x) * (x - this.x) + (y - this.y)
-				* (y - this.y) <= radius * radius;
-		if (result == true) {
-			numberOfContainingPoints++;
-		}
-		return result;
+		int deltaX = x - this.x;
+		int deltaY = y - this.y;
+		return deltaX * deltaX + deltaY * deltaY <= radius * radius;
 	}
 
 	public int countContainingPoints(int[] xCords, int[] yCords) {
-		numberOfContainingPoints = 0;
+		int numberOfContainingPoints = 0;
 		for (int i = 0; i < xCords.length; ++i) {
-			contains(xCords[i], yCords[i]);
+			if (contains(xCords[i], yCords[i])) {
+				numberOfContainingPoints++;
+			}
 		}
 		return numberOfContainingPoints;
 	}

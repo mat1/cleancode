@@ -1,14 +1,16 @@
 package com.zuehlke.smellyshapes;
 
-public class ShapeGroup extends ComplexShape {
-	
+public class ShapeGroup extends Shape {
+
 	private static final int INITIAL_SIZE = 10;
 	private static final int GROWTH_SIZE = 10;
-	
+	private boolean readOnly;
+
 	Shape[] shapes = new Shape[INITIAL_SIZE];
 	int size = 0;
 
 	public ShapeGroup() {
+		readOnly = false;
 	}
 
 	public ShapeGroup(Shape[] shapes, boolean readOnly) {
@@ -17,23 +19,34 @@ public class ShapeGroup extends ComplexShape {
 		this.readOnly = readOnly;
 	}
 
-	// TODO long method, deeply nested control flow
-	public void add(Shape shape) {
-		if (!readOnly) {
-			int newSize = size + 1;
-			if (newSize > shapes.length) {
-				Shape[] newShapes = new Shape[shapes.length + GROWTH_SIZE];
-				for (int i = 0; i < size; i++) {
-					newShapes[i] = shapes[i];
-				}
-				shapes = newShapes;
-			}
+	public void setReadOnly(boolean readOnly) {
+		this.readOnly = readOnly;
+	}
 
-			if (contains(shape)) {
-				return;
-			}
-			shapes[size++] = shape;
+	public void add(Shape shape) {
+		if (readOnly || contains(shape)) {
+			return;
 		}
+		if (shouldGrow()) {
+			grow();
+		}
+		addInternally(shape);
+	}
+
+	private boolean shouldGrow() {
+		return size + 1 > shapes.length;
+	}
+
+	private void grow() {
+		Shape[] newShapes = new Shape[shapes.length + GROWTH_SIZE];
+		for (int i = 0; i < size; i++) {
+			newShapes[i] = shapes[i];
+		}
+		shapes = newShapes;
+	}
+
+	private void addInternally(Shape shape) {
+		shapes[size++] = shape;
 	}
 
 	public boolean contains(Shape shape) {

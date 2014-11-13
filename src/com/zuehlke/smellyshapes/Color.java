@@ -24,7 +24,6 @@ public class Color {
 	}
 
 	private void convertTextValueToRGBAndHex() {
-		// TODO long method
 		errorMessage = "";
 		if (RED.equals(colorAsText)) {
 			colorAsRGB_Red = "255";
