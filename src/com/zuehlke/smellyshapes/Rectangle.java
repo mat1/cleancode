@@ -3,16 +3,14 @@ package com.zuehlke.smellyshapes;
 public class Rectangle implements Shape {
 
 	protected Color c = new Color(Color.BLUE);
-	private int x;
-	private int y;
+	private final Point point;
 	int width;
 	int height;
 
-	public Rectangle(int x, int y, int width, int height) {
-		this.x = x;
-		this.y = y;
-		this.width = width;
-		this.height = height;
+	public Rectangle(Point point, Dimension parameterObject) {
+		this.point = point;
+		this.width = parameterObject.getWidth();
+		this.height = parameterObject.getHeight();
 	}
 
 	public int getWidth() {
@@ -23,10 +21,9 @@ public class Rectangle implements Shape {
 		return height;
 	}
 
-	public boolean contains(int x, int y) {
-		
-		boolean containsX = (this.x <= x) && (x <= this.x + width);
-		boolean containsY = (this.y <= y) && (y <= this.y + height);
+	public boolean contains(Point point) {
+		boolean containsX = (this.point.getX() <= point.getX()) && (point.getX() <= this.point.getX() + width);
+		boolean containsY = (this.point.getY() <= point.getY()) && (point.getY() <= this.point.getY() + height);
 		return containsX && containsY;
 	}
 
@@ -35,11 +32,11 @@ public class Rectangle implements Shape {
 	}
 
 	public int getX() {
-		return x;
+		return point.getX();
 	}
 
 	public int getY() {
-		return y;
+		return point.getY();
 	}
 	
 	@Override
@@ -56,6 +53,6 @@ public class Rectangle implements Shape {
 
 	public String toString() {
 		return String.format("Rectangle: (%d:%d) width=%d height=%d color=%s",
-				x, y, width, height, c.getColorAsHex());
+				point.getX(), point.getY(), width, height, c.getColorAsHex());
 	}
 }

@@ -2,12 +2,12 @@ package com.zuehlke.smellyshapes;
 
 public class Square extends Rectangle {
 
-	public Square(int x, int y, int edgeLength) {
-		super(x, y, edgeLength, edgeLength);
+	public Square(Point point, int edgeLength) {
+		super(point, new Dimension(edgeLength, edgeLength));
 	}
 
-	public Square(int x, int y, int edgeLength, Color color) {
-		super(x, y, edgeLength, edgeLength);
+	public Square(Point point, int edgeLength, Color color) {
+		super(point, new Dimension(edgeLength, edgeLength));
 		this.c = color;
 	}
 
@@ -22,8 +22,8 @@ public class Square extends Rectangle {
 				getY(), getWidth(), c.getColorAsHex());
 	}
 
-	public boolean contains(int x1, int y1, int x2, int y2) {
-		return contains(x1, y1) && contains(x2, y2);
+	public boolean contains(Point point1, Point point2) {
+		return contains(point1) && contains(point2);
 	}
 	
 	@Override

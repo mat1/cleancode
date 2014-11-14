@@ -11,7 +11,7 @@ public class ShapeGroupTest {
     @Test
     public void tooXml() throws Exception {
         ShapeGroup shapeGroup = new ShapeGroup();
-        shapeGroup.add(new Rectangle(0, 0, 2, 1));
+        shapeGroup.add(new Rectangle(new Point(0, 0), new Dimension(2, 1)));
 
         String xml = shapeGroup.toXml();
 
@@ -22,7 +22,7 @@ public class ShapeGroupTest {
 
     @Test
     public void constructor_withShapeArray() throws Exception {
-        ShapeGroup shapeGroup = new ShapeGroup(new Shape[]{new Circle(0, 0, 0)}, true);
+        ShapeGroup shapeGroup = new ShapeGroup(new Shape[]{new Circle(new Point(0, 0), 0)}, true);
 
         assertEquals(1, shapeGroup.getSize());
     }
@@ -32,7 +32,7 @@ public class ShapeGroupTest {
         ShapeGroup shapeGroup = new ShapeGroup();
         shapeGroup.setReadOnly(true);
 
-        shapeGroup.add(new Circle(0, 0, 0));
+        shapeGroup.add(new Circle(new Point(0, 0), 0));
 
         assertEquals(0, shapeGroup.getSize());
     }
@@ -42,7 +42,7 @@ public class ShapeGroupTest {
         ShapeGroup shapeGroup = new ShapeGroup();
         shapeGroup.setReadOnly(false);
 
-        shapeGroup.add(new Circle(0, 0, 0));
+        shapeGroup.add(new Circle(new Point(0, 0), 0));
 
         assertEquals(1, shapeGroup.getSize());
     }
@@ -52,7 +52,7 @@ public class ShapeGroupTest {
         ShapeGroup shapeGroup = new ShapeGroup();
         shapeGroup.setReadOnly(false);
 
-        Circle circle = new Circle(0, 0, 0);
+        Circle circle = new Circle(new Point(0, 0), 0);
         shapeGroup.add(circle);
         shapeGroup.add(circle);
 
@@ -65,7 +65,7 @@ public class ShapeGroupTest {
         shapeGroup.setReadOnly(false);
 
         for (int i = 0; i < 11; i++) {
-            shapeGroup.add(new Circle(0, 0, 0));
+            shapeGroup.add(new Circle(new Point(0, 0), 0));
         }
 
         assertEquals(11, shapeGroup.getSize());
@@ -75,30 +75,30 @@ public class ShapeGroupTest {
     public void contains_pointNotInGroup() throws Exception {
         ShapeGroup shapeGroup = new ShapeGroup();
 
-        assertFalse(shapeGroup.contains(0, 0));
+        assertFalse(shapeGroup.contains(new Point(0, 0)));
     }
 
     @Test
     public void contains_pointInGroup() throws Exception {
         ShapeGroup shapeGroup = new ShapeGroup();
-        shapeGroup.add(new Circle(0, 0, 0));
+        shapeGroup.add(new Circle(new Point(0, 0), 0));
 
-        assertTrue(shapeGroup.contains(0, 0));
+        assertTrue(shapeGroup.contains(new Point(0, 0)));
     }
 
     @Test
     public void contains_null() throws Exception {
         ShapeGroup shapeGroup = new ShapeGroup();
 
-        assertFalse(shapeGroup.contains(null));
+        assertFalse(shapeGroup.containsShape(null));
     }
 
     @Test
     public void contains_shapeInGroup() throws Exception {
         ShapeGroup shapeGroup = new ShapeGroup();
-        Circle c = new Circle(0, 0, 0);
+        Circle c = new Circle(new Point(0, 0), 0);
         shapeGroup.add(c);
 
-        assertTrue(shapeGroup.contains(c));
+        assertTrue(shapeGroup.containsShape(c));
     }
 }

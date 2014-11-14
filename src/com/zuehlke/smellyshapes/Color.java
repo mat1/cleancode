@@ -10,11 +10,11 @@ public class Color {
 	private String colorAsHex;
 	private String colorAsText;
 	// TODO temp field
-	private String colorAsRGB_Red;
+	private int red;
 	// TODO temp field
-	private String colorAsRGB_Green;
+	private int green;
 	// TODO temp field
-	private String colorAsRGB_Blue;
+	private int blue;
 	// TODO temp field
 	private String errorMessage;
 
@@ -22,23 +22,32 @@ public class Color {
 		this.colorAsText = colorAsText;
 		convertTextValueToRGBAndHex();
 	}
+	
+	public Color(String colorAsHex, String colorAsText, int red, int green,
+			int blue) {
+		this.colorAsHex = colorAsHex;
+		this.colorAsText = colorAsText;
+		this.red = red;
+		this.green = green;
+		this.blue = blue;
+	}
 
 	private void convertTextValueToRGBAndHex() {
 		errorMessage = "";
 		if (RED.equals(getColorAsText())) {
-			colorAsRGB_Red = "255";
-			colorAsRGB_Blue = "0";
-			colorAsRGB_Green = "0";
+			red = 255;
+			blue = 0;
+			green = 0;
 			colorAsHex = "#FF0000";
 		} else if (BLUE.equals(getColorAsText())) {
-			colorAsRGB_Red = "0";
-			colorAsRGB_Blue = "255";
-			colorAsRGB_Green = "0";
+			red = 0;
+			blue = 255;
+			green = 0;
 			colorAsHex = "#00FF00";
 		} else if (GREEN.equals(getColorAsText())) {
-			colorAsRGB_Red = "0";
-			colorAsRGB_Blue = "0";
-			colorAsRGB_Green = "255";
+			red = 0;
+			blue = 0;
+			green = 255;
 			colorAsHex = "#0000FF";
 		} else {
 			errorMessage = "Color not recognized";
@@ -50,8 +59,8 @@ public class Color {
 	}
 
 	public String getFormattedColor() {
-		return getColorAsText() + " " + colorAsHex + " " + colorAsRGB_Red + ":"
-				+ colorAsRGB_Green + ":" + colorAsRGB_Blue;
+		return getColorAsText() + " " + colorAsHex + " " + red + ":"
+				+ green + ":" + blue;
 	}
 
 	public String getColorAsText() {
@@ -63,8 +72,8 @@ public class Color {
 	}
 
 	public String getColorAsRgb() {
-		return " RGB=" + colorAsRGB_Red + "," + colorAsRGB_Green + ","
-				+ colorAsRGB_Blue;
+		return " RGB=" + red + "," + green + ","
+				+ blue;
 	}
 
 }
