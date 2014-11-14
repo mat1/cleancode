@@ -1,6 +1,6 @@
 package com.zuehlke.smellyshapes;
 
-public class Circle extends Shape {
+public class Circle implements Shape {
 
 	private int x;
 	private int y;
@@ -47,6 +47,17 @@ public class Circle extends Shape {
 
 	public int getRadius() {
 		return radius;
+	}
+
+	@Override
+	public String toXml() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("<circle");
+		builder.append(" x=\"" + x + "\"");
+		builder.append(" y=\"" + y + "\"");
+		builder.append(" radius=\"" + radius + "\"");
+		builder.append(" />\n");
+		return builder.toString();
 	}
 
 	public String toString() {

@@ -1,6 +1,6 @@
 package com.zuehlke.smellyshapes;
 
-public class ShapeGroup extends Shape {
+public class ShapeGroup implements Shape {
 
 	private static final int INITIAL_SIZE = 10;
 	private static final int GROWTH_SIZE = 10;
@@ -67,5 +67,16 @@ public class ShapeGroup extends Shape {
 			}
 		}
 		return false;
+	}
+	
+	@Override
+	public String toXml() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("<shapegroup>\n");
+		for (int i = 0; i < size; i++) {
+			builder.append(shapes[i].toXml());
+		}
+		builder.append("</shapegroup>\n");
+		return builder.toString();
 	}
 }

@@ -29,4 +29,16 @@ public class Square extends Rectangle {
 	public boolean contains(int x1, int y1, int x2, int y2) {
 		return contains(x1, y1) && contains(x2, y2);
 	}
+	
+	@Override
+	public String toXml() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("<square");
+		builder.append(" x=\"" + getX() + "\"");
+		builder.append(" y=\"" + getY() + "\"");
+		builder.append(" edgeLength=\"" + getWidth() + "\"");
+		builder.append(" />\n");
+		return builder.toString();
+	}
+	
 }
