@@ -31,16 +31,16 @@ public class SquareTest {
     public void containsPoints() {
         Square square = new Square(0, 0, 1);
 
-        assertTrue(square.containsPoint(0, 0));
-        assertTrue(square.containsPoint(0, 1));
-        assertTrue(square.containsPoint(1, 1));
-        assertTrue(square.containsPoint(1, 0));
+        assertTrue(square.contains(0, 0));
+        assertTrue(square.contains(0, 1));
+        assertTrue(square.contains(1, 1));
+        assertTrue(square.contains(1, 0));
 
-        assertFalse(square.containsPoint(-1, -1));
-        assertFalse(square.containsPoint(-1, 0));
-        assertFalse(square.containsPoint(0, -1));
-        assertFalse(square.containsPoint(1, 2));
-        assertFalse(square.containsPoint(2, 1));
+        assertFalse(square.contains(-1, -1));
+        assertFalse(square.contains(-1, 0));
+        assertFalse(square.contains(0, -1));
+        assertFalse(square.contains(1, 2));
+        assertFalse(square.contains(2, 1));
     }
 
     @Test(expected = RuntimeException.class)

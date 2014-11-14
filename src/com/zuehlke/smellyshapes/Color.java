@@ -45,25 +45,13 @@ public class Color {
 		}
 	}
 
-	public String getBlue() {
-		return colorAsRGB_Blue;
-	}
-
-	public String getGreen() {
-		return colorAsRGB_Green;
-	}
-
-	public String getRed() {
-		return colorAsRGB_Red;
-	}
-
 	public String getErrorMessage() {
 		return errorMessage;
 	}
 
 	public String getFormattedColor() {
-		return getColorAsText() + " " + colorAsHex + " " + colorAsRGB_Red
-				+ ":" + colorAsRGB_Green + ":" + colorAsRGB_Blue;
+		return getColorAsText() + " " + colorAsHex + " " + colorAsRGB_Red + ":"
+				+ colorAsRGB_Green + ":" + colorAsRGB_Blue;
 	}
 
 	public String getColorAsText() {
@@ -73,4 +61,10 @@ public class Color {
 	public String getColorAsHex() {
 		return colorAsHex;
 	}
+
+	public String getColorAsRgb() {
+		return " RGB=" + colorAsRGB_Red + "," + colorAsRGB_Green + ","
+				+ colorAsRGB_Blue;
+	}
+
 }

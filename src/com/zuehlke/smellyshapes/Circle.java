@@ -62,7 +62,7 @@ public class Circle implements Shape {
 
 	public String toString() {
 		return "Circle: (" + this.x + "," + this.y + ") radius= " + radius
-				+ " RGB=" + this.color.getRed() + "," + this.color.getGreen()
-				+ "," + this.color.getBlue();
+				+ color.getColorAsRgb();
 	}
+
 }

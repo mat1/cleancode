@@ -11,10 +11,6 @@ public class Square extends Rectangle {
 		this.c = color;
 	}
 
-	public boolean containsPoint(int x, int y) {
-		return contains(x, y);
-	}
-
 	// FIXME LSP
 	public int getHeight() throws RuntimeException {
 		throw new RuntimeException(
