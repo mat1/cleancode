@@ -1,20 +1,23 @@
 package com.zuehlke.smellyshapes;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 public class ShapeGroup implements Shape {
 
-	private static final int INITIAL_SIZE = 10;
-	private static final int GROWTH_SIZE = 10;
 	private boolean readOnly;
 
-	Shape[] shapes = new Shape[INITIAL_SIZE];
-	int size = 0;
+	private Set<Shape> shapes;
+	int size;
 
 	public ShapeGroup() {
 		readOnly = false;
+		shapes = new HashSet<>();
 	}
 
 	public ShapeGroup(Shape[] shapes, boolean readOnly) {
-		this.shapes = shapes;
+		this.shapes = new HashSet<>(Arrays.asList(shapes));
 		this.size = shapes.length;
 		this.readOnly = readOnly;
 	}
@@ -24,57 +27,36 @@ public class ShapeGroup implements Shape {
 	}
 
 	public void add(Shape shape) {
-		if (readOnly || contains(shape)) {
+		if (readOnly) {
 			return;
-		}
-		if (shouldGrow()) {
-			grow();
 		}
 		addInternally(shape);
 	}
 
-	private boolean shouldGrow() {
-		return size + 1 > shapes.length;
-	}
-
-	private void grow() {
-		Shape[] newShapes = new Shape[shapes.length + GROWTH_SIZE];
-		for (int i = 0; i < size; i++) {
-			newShapes[i] = shapes[i];
-		}
-		shapes = newShapes;
-	}
-
 	private void addInternally(Shape shape) {
-		shapes[size++] = shape;
+		shapes.add(shape);
+		size = shapes.size();
 	}
 
 	public boolean contains(Shape shape) {
-		for (int i = 0; i < size; i++) {
-			if (shapes[i].equals(shape)) {
+		return shapes.contains(shape);
+	}
+
+	public boolean contains(int x, int y) {
+		for (Shape shape : shapes) {
+			if (shape.contains(x, y)) {
 				return true;
 			}
 		}
 		return false;
 	}
 
-	public boolean contains(int x, int y) {
-		for (Shape shape : shapes) {
-			if (shape != null) {
-				if (shape.contains(x, y)) {
-					return true;
-				}
-			}
-		}
-		return false;
-	}
-	
 	@Override
 	public String toXml() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("<shapegroup>\n");
-		for (int i = 0; i < size; i++) {
-			builder.append(shapes[i].toXml());
+		for (Shape shape : shapes) {
+			builder.append(shape.toXml());
 		}
 		builder.append("</shapegroup>\n");
 		return builder.toString();
