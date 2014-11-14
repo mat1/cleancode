@@ -9,7 +9,6 @@ public class ShapeGroup implements Shape {
 	private boolean readOnly;
 
 	private Set<Shape> shapes;
-	int size;
 
 	public ShapeGroup() {
 		readOnly = false;
@@ -18,7 +17,6 @@ public class ShapeGroup implements Shape {
 
 	public ShapeGroup(Shape[] shapes, boolean readOnly) {
 		this.shapes = new HashSet<>(Arrays.asList(shapes));
-		this.size = shapes.length;
 		this.readOnly = readOnly;
 	}
 
@@ -35,7 +33,6 @@ public class ShapeGroup implements Shape {
 
 	private void addInternally(Shape shape) {
 		shapes.add(shape);
-		size = shapes.size();
 	}
 
 	public boolean contains(Shape shape) {
@@ -60,5 +57,9 @@ public class ShapeGroup implements Shape {
 		}
 		builder.append("</shapegroup>\n");
 		return builder.toString();
+	}
+
+	int getSize() {
+		return shapes.size();
 	}
 }

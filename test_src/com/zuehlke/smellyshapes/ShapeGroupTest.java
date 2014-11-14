@@ -24,7 +24,7 @@ public class ShapeGroupTest {
     public void constructor_withShapeArray() throws Exception {
         ShapeGroup shapeGroup = new ShapeGroup(new Shape[]{new Circle(0, 0, 0)}, true);
 
-        assertEquals(1, shapeGroup.size);
+        assertEquals(1, shapeGroup.getSize());
     }
 
     @Test
@@ -34,7 +34,7 @@ public class ShapeGroupTest {
 
         shapeGroup.add(new Circle(0, 0, 0));
 
-        assertEquals(0, shapeGroup.size);
+        assertEquals(0, shapeGroup.getSize());
     }
 
     @Test
@@ -44,7 +44,7 @@ public class ShapeGroupTest {
 
         shapeGroup.add(new Circle(0, 0, 0));
 
-        assertEquals(1, shapeGroup.size);
+        assertEquals(1, shapeGroup.getSize());
     }
 
     @Test
@@ -56,7 +56,7 @@ public class ShapeGroupTest {
         shapeGroup.add(circle);
         shapeGroup.add(circle);
 
-        assertEquals(1, shapeGroup.size);
+        assertEquals(1, shapeGroup.getSize());
     }
 
     @Test
@@ -68,7 +68,7 @@ public class ShapeGroupTest {
             shapeGroup.add(new Circle(0, 0, 0));
         }
 
-        assertEquals(11, shapeGroup.size);
+        assertEquals(11, shapeGroup.getSize());
     }
 
     @Test
