@@ -24,6 +24,7 @@ public class Rectangle implements Shape {
 	}
 
 	public boolean contains(int x, int y) {
+		
 		boolean containsX = (this.x <= x) && (x <= this.x + width);
 		boolean containsY = (this.y <= y) && (y <= this.y + height);
 		return containsX && containsY;

@@ -32,7 +32,7 @@ public class ColorTest {
     public void getColorFormatted() throws Exception {
         Color c = new Color("Red");
 
-        String formattedColor = c.getColorFormatted(true);
+        String formattedColor = c.getFormattedColor();
 
         assertEquals("Red #FF0000 255:0:0", formattedColor);
     }

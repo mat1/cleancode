@@ -5,7 +5,7 @@ public class Color {
 	public static final String GREEN = "Green";
 	public static final String BLUE = "Blue";
 	public static final String RED = "Red";
-	
+
 	// TODO temp field
 	private String colorAsHex;
 	private String colorAsText;
@@ -25,17 +25,17 @@ public class Color {
 
 	private void convertTextValueToRGBAndHex() {
 		errorMessage = "";
-		if (RED.equals(colorAsText)) {
+		if (RED.equals(getColorAsText())) {
 			colorAsRGB_Red = "255";
 			colorAsRGB_Blue = "0";
 			colorAsRGB_Green = "0";
 			colorAsHex = "#FF0000";
-		} else if (BLUE.equals(colorAsText)) {
+		} else if (BLUE.equals(getColorAsText())) {
 			colorAsRGB_Red = "0";
 			colorAsRGB_Blue = "255";
 			colorAsRGB_Green = "0";
 			colorAsHex = "#00FF00";
-		} else if (GREEN.equals(colorAsText)) {
+		} else if (GREEN.equals(getColorAsText())) {
 			colorAsRGB_Red = "0";
 			colorAsRGB_Blue = "0";
 			colorAsRGB_Green = "255";
@@ -61,13 +61,13 @@ public class Color {
 		return errorMessage;
 	}
 
-	public String getColorFormatted(boolean includeHexAndRGB) {
-		if (includeHexAndRGB) {
-			return colorAsText + " " + colorAsHex + " " + colorAsRGB_Red + ":"
-					+ colorAsRGB_Green + ":" + colorAsRGB_Blue;
-		} else {
-			return colorAsText;
-		}
+	public String getFormattedColor() {
+		return getColorAsText() + " " + colorAsHex + " " + colorAsRGB_Red
+				+ ":" + colorAsRGB_Green + ":" + colorAsRGB_Blue;
+	}
+
+	public String getColorAsText() {
+		return colorAsText;
 	}
 
 	public String getColorAsHex() {
