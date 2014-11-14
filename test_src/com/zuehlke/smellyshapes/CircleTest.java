@@ -1,5 +1,8 @@
 package com.zuehlke.smellyshapes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -32,7 +35,14 @@ public class CircleTest {
 
     @Test
     public void countContainingPoints() throws Exception {
-        int result = circle.countContainingPoints(new int[]{0, 10}, new int[]{0, 10});
+        int[] xCords = new int[]{0, 10};
+        int[] yCords = new int[]{0, 10};
+        
+		List<Point> points = new ArrayList<>();
+		for (int i = 0; i < xCords.length; ++i) {
+			points.add(new Point(xCords[i], yCords[i]));
+		}
+		int result = circle.countContainingPoints(points);
 
         assertEquals(1, result);
     }

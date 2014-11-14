@@ -16,12 +16,11 @@ public class Point {
 	public int getY() {
 		return y;
 	}
-
-	public int getDeltaX(Point point) {
-		return x - point.x;
+	
+	public int distanceTo(Point point) {
+		int deltaX = x - point.x;
+		int deltaY = y - point.y;
+		return Math.abs(deltaX) + Math.abs(deltaY);
 	}
 	
-	public int getDeltaY(Point point) {
-		return y - point.y;
-	}
 }
